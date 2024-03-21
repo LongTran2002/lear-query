@@ -4,6 +4,7 @@ import { getCabins } from "../../services/apiCabins";
 import CabinRow from "./CabinRow";
 import Spinner from "../../ui/Spinner";
 import { StyledTable } from "../../ui/Table";
+import useCabins from "./useCabins";
 // import Table from "ui/Table";
 // import Menus from "ui/Menus";
 // import Empty from "ui/Empty";
@@ -72,14 +73,7 @@ function CabinTable() {
   //   (a, b) => (a[field] - b[field]) * modifier
   // );
 
-  const {
-    data: cabins,
-    isLoading,
-    error,
-  } = useQuery({
-    queryKey: ["cabins"],
-    queryFn: getCabins,
-  });
+  const { cabins, isLoading } = useCabins();
   if (isLoading) return <Spinner />;
   return (
     // <Menus>
